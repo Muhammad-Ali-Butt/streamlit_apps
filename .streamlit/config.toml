@@ -1,6 +1,8 @@
 [theme] 
 primaryColor="gainsboro"
-backgroundColor="ghostwhite"
-secondaryBackgroundColor="firebrick"
-textColor="#000000"
+backgroundColor= "darkslateblue"       
+secondaryBackgroundColor="darkorange"
+textColor="#ffffff"
 font="sans serif"
+
+# darkslateblue color can also be used as background color and looks quite good or darkorange #1D6

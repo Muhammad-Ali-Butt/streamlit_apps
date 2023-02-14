@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import seaborn as sns
+from colorama import Fore
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # ? Make containers
 header = st.container()
@@ -42,21 +44,18 @@ with model_training:
     st.header('Kashti waalo ka kia bana')
     st.text('In this project we can train our model')
     # ? making columns
-    input, display = st.columns(2)
+    inputing, display = st.columns(2)
     # ? In 1st column we add selection points
-    max_depth = input.slider(
+    max_depth = inputing.slider(
         'How many people do you know', min_value=10, max_value=100, value=20, step=5)
 
 # ? n_estimators
-n_estimators = input.selectbox('How many Trees should be in RF', options=[
+n_estimators = inputing.selectbox('How many Trees should be in RF', options=[
     50, 100, 200, 300, 'NO LIMIT'])
 
-# Adding list of features
-input.write(df.columns)
-
 # Input features from user
-infe = input.text_input('Which feature we should use')
-
+input_features = inputing.text_input('Which feature we should use')
+# inputing.write(df.head(3))
 # Machine learning model
 model = RandomForestRegressor(max_depth=max_depth, n_estimators=n_estimators)
 #! If user select NO LIMIT then
@@ -67,12 +66,17 @@ else:
         max_depth=max_depth, n_estimators=n_estimators)
 
 # define X and y
-X = df[[infe]]
-y = df[['fare']]
+X = df[[input_features]]
+y = df['fare']
 
-# Fit model
+# st.write(X.shape, y.shape)
+
+# # Fit model
 model.fit(X, y)
-pred = model.predict(y)
+pred = model.predict(X)
+# else:
+# st.write(
+# 'The feature you entered is not present in the data. Please enter a valid feature name.')
 
 # Display metrics
 display.subheader('Mean absolute error of the model is:')

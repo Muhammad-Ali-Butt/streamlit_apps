@@ -28,17 +28,18 @@ from streamlit_option_menu import option_menu
 # st.image("th.jpg")
 # st.image("th2.jpg")
 st.set_page_config(
-    layout="wide", page_title="Kyu k ye Dil ka Maamla ha", initial_sidebar_state="collapsed", page_icon="Favicon Preview 32x32")
+    layout="wide", page_title="Kyu k ye Dil ka Maamla ha", initial_sidebar_state="collapsed")
 
 # Insert A Navbar
-with st.sidebar:
-    selected = option_menu(
-        menu_title='Menu',
-        options=['Data Download', 'About'],
-        icons=['file-arrow-down-fill', 'book'],
-        menu_icon='hourglass-split',
-        # default_index=0,
-    )
+# with st.sidebar:
+selected = option_menu(
+    menu_title='Menu',
+    options=['Data Download', 'About'],
+    icons=['download', 'info'],
+    menu_icon='hourglass',
+    default_index=0,
+    orientation='horizontal'
+)
 if selected == 'Data Download':
     st.markdown("""
             1. Click the link below and right click raw button and tap **Save link as**.
