@@ -1,8 +1,10 @@
 [theme] 
 primaryColor="gainsboro"
-backgroundColor= "darkslateblue"       
-secondaryBackgroundColor="darkorange"
+backgroundColor= "darkblue"  
+secondaryBackgroundColor="#00203FFF"
 textColor="#ffffff"
 font="sans serif"
 
-# darkslateblue color can also be used as background color and looks quite good or darkorange #1D6
+# darkslateblue color can also be used as background color and looks quite good or darkorange 
+# mint #ADEFD1FF and sailorblue #00203FFF
+# cherrytomato #ED2B33FF

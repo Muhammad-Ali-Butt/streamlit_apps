@@ -28,7 +28,7 @@ from streamlit_option_menu import option_menu
 # st.image("th.jpg")
 # st.image("th2.jpg")
 st.set_page_config(
-    layout="wide", page_title="Kyu k ye Dil ka Maamla ha", initial_sidebar_state="collapsed")
+    layout="wide", page_title="Kyu k ye Dil ka Maamla ha", initial_sidebar_state="expanded")
 
 # Insert A Navbar
 # with st.sidebar:
@@ -36,8 +36,8 @@ selected = option_menu(
     menu_title='Menu',
     options=['Data Download', 'About'],
     icons=['download', 'info'],
-    menu_icon='hourglass',
-    default_index=0,
+    menu_icon='menu-button-wide-fill',
+    default_index=1,
     orientation='horizontal'
 )
 if selected == 'Data Download':
@@ -49,7 +49,7 @@ if selected == 'Data Download':
                 )
 elif selected == 'About':
     st.write("""
-            <h3 style=" color:red;"> Made with ❤️ by Qadir Shahbaz, Muhammad Ayaz, Muhammad Ali Farrukh & Muhammad Ali Butt&#128640 &#128075 &#127825</h3>
+            <h3 style=" color:red;"> Made with ❤️ by Qadir Shahbaz, Muhammad Ayaz, Muhammad Ali Farrukh & Muhammad Ali Butt&#128640</h3>
             <strong>CopyRight © 2023 PKC Team1 All Rights Reserved.</strong> """, unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
@@ -353,22 +353,22 @@ X_projected = pca.fit_transform(X)
 x1 = X_projected[:, 0]
 # second principal component of the data 1 means second column
 x2 = X_projected[:, 1]
-fig = plt.figure()
+fig= plt.figure(figsize=(6, 4))
 plt.scatter(df1['sex'], df1['age'], c=df1['output'], alpha=0.8,
-            cmap='autumn', edgecolors='crimson', s=60)
+            cmap='autumn', edgecolors='crimson', s=40)
 plt.xlabel('Sex', fontsize=15, color='red', fontweight='bold')
 plt.ylabel('Age', fontsize=15, color='red', fontweight='bold')
 plt.colorbar()
 st.pyplot(fig)
 # Age vs Chol
 st.header("Age vs Cholesterol")
-fig_preg = plt.figure()
+fig2=plt.figure(figsize=(6, 4))
 dimension1 = sns.scatterplot(
     x="age", y="chol", data=df1, hue="output", palette="autumn_r", s=60)
 dimension2 = sns.scatterplot(
-    x=user_data["age"], y=user_data["chol"], s=60)
+    x=user_data["age"], y=user_data["chol"], s=40)
 plt.xticks(ha='right', rotation=45, fontsize=8)
 plt.yticks(ha='right', rotation=45, fontsize=8)
-plt.title("0 - Healty & 1 Possiblity of Heart attach",
+plt.title("Healthy(0) & Possibility of Heart attack(1)",
           fontsize=15, color='crimson', fontweight='bold')
-st.pyplot(fig_preg)
+st.pyplot(fig2)
